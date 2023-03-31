@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace console_project_example.src
+using System;
+using System.IO.Compression;
+
+ 
+
+
+public class ExampleController
 {
-  internal class Class1
+  private static string TargetDirectory = "/example/directory/";
+
+
+
+  public void ExtractEntry(IEnumerator<ZipArchiveEntry> entriesEnumerator)
   {
+    ZipArchiveEntry entry = entriesEnumerator.Current;
+    string destinationPath = Path.Combine(TargetDirectory, entry.FullName);
+
+
+
+    entry.ExtractToFile(destinationPath);
   }
 }
